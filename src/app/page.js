@@ -1,5 +1,5 @@
 // Componentes
-import Nav from "@/components/Nav";
+import Nav from "@/components/cliente/Nav";
 
 export default function Home() {
   return (
