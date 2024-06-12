@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Nav() {
     return(
         <nav className="fondoCli flex justify-between p-3 md:p-4 md:px-10 fixed w-full z-50">
@@ -8,14 +10,14 @@ export default function Nav() {
             <div className="hidden md:flex">
                 <ul className="flex gap-x-10">
                     <li>Inicio</li>
-                    <li>Productos</li>
-                    <li>Contacto</li>
-                    <li>Mi carrito</li>
+                    <li>Catálogo</li>
+                    <li>Destacados</li>
+                    <li>Web</li>
                 </ul>
             </div>
             {/* Movil */}
             <div className="md:hidden">
-                <button className="rotate-90 font-bold">|||</button>
+                <Link href="/pages/control/agregarDestacado" className="rotate-90 font-bold">|||</Link>
             </div>            
         </nav>
     )
