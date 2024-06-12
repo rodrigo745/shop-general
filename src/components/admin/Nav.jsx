@@ -1,8 +1,8 @@
 export default function Nav() {
     return(
-        <nav className="fondoCli2 flex justify-between p-3 md:p-4 fixed w-full z-50">
+        <nav className="fondoCli flex justify-between p-3 md:p-4 md:px-10 fixed w-full z-50">
             <div className="font-bold">
-                <h3>Tiesdsdnda <span className="textoCol">Quinteros</span></h3>    
+                <h3 className="textoCol2">Tienda <span className="text-neutral-900">Quinteros</span></h3>    
             </div>
             {/* PC */}
             <div className="hidden md:flex">
@@ -15,7 +15,7 @@ export default function Nav() {
             </div>
             {/* Movil */}
             <div className="md:hidden">
-                <button className="rotate-90">|||</button>
+                <button className="rotate-90 font-bold">|||</button>
             </div>            
         </nav>
     )
