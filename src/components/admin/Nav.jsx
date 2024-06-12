@@ -11,13 +11,13 @@ export default function Nav() {
                 <ul className="flex gap-x-10">
                     <li>Inicio</li>
                     <li>Catálogo</li>
-                    <li>Destacados</li>
+                    <Link href="/pages/control">Destacados</Link>
                     <li>Web</li>
                 </ul>
             </div>
             {/* Movil */}
             <div className="md:hidden">
-                <Link href="/pages/control/agregarDestacado" className="rotate-90 font-bold">|||</Link>
+                <button className="rotate-90 font-bold">|||</button>
             </div>            
         </nav>
     )
