@@ -2,3 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* Estilos generales */
+body{
+    background-color: #DBD2CD;
+}
+
+.fondoCli{
+    background-color: #DBD2CD;
+    color: black;
+}
+.fondoCli2{
+    background-color: #50382C;
+    color: white;
+}
+.textoCol{
+    color: #DBD2CD;   
+}
+
