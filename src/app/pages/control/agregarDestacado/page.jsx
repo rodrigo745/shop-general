@@ -14,7 +14,7 @@ export default function ProductoDestacado(){
     }, [nombre])
 
     return(
-        <div className="md:mt-5">
+        <div className="md:mt-5  min-w-screen w-full ">
             <h3 className="font-bold md:text-xl">Agregar producto destacado</h3>
             <div className="flex flex-col md:flex md:flex-row justify-between md:space-x-16 mt-4">
                 <div className="md:w-[40%] xl:w-[30%] space-y-5">
@@ -35,8 +35,8 @@ export default function ProductoDestacado(){
                     <input type="text" placeholder="Cargar imagenes secundarias" className={estiloInput} />
                     <button className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
-                <div className="md:w-[60%] xl:w-[70%] mt-10 md:mt-0">
-                    <VistaPrevDestacado/>
+                <div className="md:w-[60%] xl:w-[70%] h-full md:h-[740px] mt-10 md:mt-0">
+                    <VistaPrevDestacado nombre={nombre}/>
                 </div>
             </div>
         </div>
