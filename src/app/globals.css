@@ -14,11 +14,14 @@ body{
 }
 .fondoCli2{
     background-color: #50382C;
-    color: white;
+    color: rgb(238, 238, 238);
 }
 .textoCol{
     color: #DBD2CD;   
 }
 .textoCol2{
     color: #50382C;   
+}
+.fondoCli2Input{
+    background-color: #61493c;   
 }
