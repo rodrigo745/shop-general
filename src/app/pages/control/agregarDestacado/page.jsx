@@ -13,7 +13,7 @@ export default function ProductoDestacado(){
     const getTitulo = (e)=>{setTitulo(e.target.value)}
     const getDescripcion = (e)=>{setDescripcion(e.target.value)}
     const getPrecio = (e)=>{setPrecio(e.target.value)}
-    const getFondoIzquierda = (e)=>{setFondoIzquierda(e.target.value)}
+    const getFondoIzquierda = (e)=>{setFondoIzquierda(e.target.value);}
     
     useEffect(()=>{
         setListaDatos({
@@ -35,7 +35,7 @@ export default function ProductoDestacado(){
                     
                     <div className="flex space-x-4">
                         
-                        <button className={estiloInput}>Fondo Derecha <input type="color" onChange={getFondoIzquierda} className={estiloInput} placeholder="Fondo Izquierda"/></button>
+                        <button className={estiloInput}>Fondo Izquierda<input type="color" onChange={getFondoIzquierda} className="" /></button>
                         <button className={estiloInput}>Fondo Derecha</button>
                     </div>
                     <div className="flex space-x-4">
