@@ -3,7 +3,7 @@ export default function VistaPrevDestacado(props){
     const { descripcion, titulo, precio, fondoIzquierda } = props.datos;
 
     return(
-        <div className="xl:h-[640px] lg:h-[240px]  w-full bg-[#61493c] rounded-xl">
+        <div className="h-[85%] w-full bg-[#61493c] rounded-xl">
             <h3 className={`text-xl font-bold px-5 p-2 bg-white text-black rounded-t-xl`}>¡Producto destacado!</h3>
             <div className="flex flex-col md:flex md:flex-row w-full h-full bg-white rounded-b-xl">
                 <div className={`flex flex-col justify-between md:pr-44 xl:pr-72 h-full rounded-b-xl md:w-[70%] px-5 ${!fondoIzquierda && "bg-cyan-700"}`} style={fondoIzquierda && {backgroundColor: fondoIzquierda}}>
