@@ -10,6 +10,14 @@ export default function ProductoDestacado(){
     const [ fondoIzquierda, setFondoIzquierda] = useState();
     const [ listaDatos, setListaDatos ] = useState([]);
 
+    // Subir los datos a mongoDB
+    const agregarDatos = async()=>{
+        const subida = await fetch("/api/destacados/sd", {
+            method: "POST",
+            body: JSON.stringify(listaDatos)
+        })
+    }
+
     const getTitulo = (e)=>{setTitulo(e.target.value)}
     const getDescripcion = (e)=>{setDescripcion(e.target.value)}
     const getPrecio = (e)=>{setPrecio(e.target.value)}
@@ -51,7 +59,7 @@ export default function ProductoDestacado(){
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
                     <input type="text" placeholder="Cargar imagen principal" className={estiloInput} />
                     <input type="text" placeholder="Cargar imagenes secundarias" className={estiloInput} />
-                    <button className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
+                    <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
                 <div className="md:w-[60%] xl:w-[70%] h-full md:h-[740px] mt-10 md:mt-0">
                     <VistaPrevDestacado datos={listaDatos}/>
