@@ -1,9 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import VistaPrevDestacado from "@/components/admin/VistaPrevDestacado";
 
 export default function ProductoDestacado(){
-
+    const inputColorRef = useRef(null);
     const [ titulo, setTitulo ] = useState();
     const [ descripcion, setDescripcion ] = useState();
     const [ precio, setPrecio ] = useState();
@@ -24,18 +24,24 @@ export default function ProductoDestacado(){
         })
     }, [titulo, descripcion, precio, fondoIzquierda])
 
+
+    const handleClick = (event) => {
+        // Simular el clic en el input de color
+        inputColorRef.current.click();
+      };
+
     return(
         <div className="md:mt-5  min-w-screen w-full ">
             <h3 className="font-bold md:text-xl">Agregar producto destacado</h3>
             <div className="flex flex-col md:flex md:flex-row justify-between md:space-x-16 mt-4">
                 <div className="md:w-[40%] xl:w-[30%] space-y-5">
-                    <input type="text" placeholder="Nombre" onChange={getTitulo} className={estiloInput} />
+                    <input type="text" placeholder="Titulo" onChange={getTitulo} className={estiloInput} />
                     <textarea onChange={getDescripcion} className={`${estiloInput} resize-none h-32`} placeholder="Descripción" />
                     <input type="text" placeholder="Precio" onChange={getPrecio} className={estiloInput} />
                     
                     <div className="flex space-x-4">
                         
-                        <button className={estiloInput}>Fondo Izquierda<input type="color" onChange={getFondoIzquierda} className="" /></button>
+                        <button onClick={handleClick} className={estiloInput}>Fondo Izquierda<input type="color" onChange={getFondoIzquierda} value={fondoIzquierda ? fondoIzquierda : `#0891b2`} className="w-5 h-5 rounded-full border bg-transparent p-0 ml-2" ref={inputColorRef} /></button>
                         <button className={estiloInput}>Fondo Derecha</button>
                     </div>
                     <div className="flex space-x-4">
