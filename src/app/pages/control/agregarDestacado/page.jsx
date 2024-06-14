@@ -11,12 +11,7 @@ export default function ProductoDestacado(){
     const [ listaDatos, setListaDatos ] = useState([]);
 
     // Subir los datos a mongoDB
-    const agregarDatos = async()=>{
-        const subida = await fetch("/api/destacados/sd", {
-            method: "POST",
-            body: JSON.stringify(listaDatos)
-        })
-    }
+    
 
     const getTitulo = (e)=>{setTitulo(e.target.value)}
     const getDescripcion = (e)=>{setDescripcion(e.target.value)}
@@ -36,7 +31,15 @@ export default function ProductoDestacado(){
     const handleClick = (event) => {
         // Simular el clic en el input de color
         inputColorRef.current.click();
-      };
+    };
+
+    const agregarDatos = async()=>{
+    
+        const subida = await fetch("/api/destacados/sd", {
+            method: "POST",
+            body: JSON.stringify(listaDatos)
+        })
+    }
 
     return(
         <div className="md:mt-5  min-w-screen w-full ">
