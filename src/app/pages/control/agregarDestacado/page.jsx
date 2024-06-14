@@ -1,26 +1,34 @@
 "use client";
 import { useState, useEffect } from "react";
-import VistaPrevDestacado from "@/components/cliente/VistaPrevDestacado";
+import VistaPrevDestacado from "@/components/admin/VistaPrevDestacado";
 
 export default function ProductoDestacado(){
 
-    const [ nombre, setNombre ] = useState();
-    const [ listaDatos, setListaDatos ] = useState([])
+    const [ titulo, setTitulo ] = useState();
+    const [ descripcion, setDescripcion ] = useState();
+    const [ precio, setPrecio ] = useState();
+    const [ listaDatos, setListaDatos ] = useState([]);
 
-    const getNombre = (e)=>{setNombre(e.target.value)}
+    const getTitulo = (e)=>{setTitulo(e.target.value)}
+    const getDescripcion = (e)=>{setDescripcion(e.target.value)}
+    const getPrecio = (e)=>{setPrecio(e.target.value)}
     
     useEffect(()=>{
-        setListaDatos([nombre])
-    }, [nombre])
+        setListaDatos({
+            titulo: titulo, 
+            descripcion: descripcion, 
+            precio: precio
+        })
+    }, [titulo, descripcion, precio])
 
     return(
         <div className="md:mt-5  min-w-screen w-full ">
             <h3 className="font-bold md:text-xl">Agregar producto destacado</h3>
             <div className="flex flex-col md:flex md:flex-row justify-between md:space-x-16 mt-4">
                 <div className="md:w-[40%] xl:w-[30%] space-y-5">
-                    <input type="text" placeholder="Nombre" onChange={getNombre} className={estiloInput} />
-                    <textarea className={`${estiloInput} resize-none h-32`} placeholder="Descripción" />
-                    <input type="text" placeholder="Precio" className={estiloInput} />
+                    <input type="text" placeholder="Nombre" onChange={getTitulo} className={estiloInput} />
+                    <textarea onChange={getDescripcion} className={`${estiloInput} resize-none h-32`} placeholder="Descripción" />
+                    <input type="text" placeholder="Precio" onChange={getPrecio} className={estiloInput} />
                     
                     <div className="flex space-x-4">
                         <button className={estiloInput}>Fondo Izquierda</button>
@@ -36,7 +44,7 @@ export default function ProductoDestacado(){
                     <button className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
                 <div className="md:w-[60%] xl:w-[70%] h-full md:h-[740px] mt-10 md:mt-0">
-                    <VistaPrevDestacado nombre={nombre}/>
+                    <VistaPrevDestacado datos={listaDatos}/>
                 </div>
             </div>
         </div>
