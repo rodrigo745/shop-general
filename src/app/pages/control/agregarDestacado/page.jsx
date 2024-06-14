@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import VistaPrevDestacado from "@/components/admin/VistaPrevDestacado";
+import VistaPrevDestacado from "@/components/admin/destacado/VistaPrevDestacado";
 
 export default function ProductoDestacado(){
     const inputColorRef = useRef(null);
@@ -9,8 +9,6 @@ export default function ProductoDestacado(){
     const [ precio, setPrecio ] = useState();
     const [ fondoIzquierda, setFondoIzquierda] = useState();
     const [ listaDatos, setListaDatos ] = useState([]);
-
-    // Subir los datos a mongoDB
     
 
     const getTitulo = (e)=>{setTitulo(e.target.value)}
