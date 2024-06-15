@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 // Componentes 
 import VistaPrevDestacado from "@/components/admin/destacado/VistaPrevDestacado";
 import Colores from "@/components/admin/destacado/Colores";
-import { set } from "mongoose";
 
 
 export default function ProductoDestacado(){
