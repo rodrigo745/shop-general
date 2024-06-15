@@ -1,6 +1,6 @@
 export default function Talles(){
     return(
-        <div>
+        <div >
             Talles
         </div>
     )

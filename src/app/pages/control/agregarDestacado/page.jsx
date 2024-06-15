@@ -1,6 +1,11 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+
+// Componentes 
 import VistaPrevDestacado from "@/components/admin/destacado/VistaPrevDestacado";
+import Colores from "@/components/admin/destacado/Colores";
+import { set } from "mongoose";
+
 
 export default function ProductoDestacado(){
     const inputColorRef = useRef(null);
@@ -39,10 +44,21 @@ export default function ProductoDestacado(){
         })
     }
 
+
+    // modals
+    const [ mostrarColor, setMostrarColor ] = useState(false);
+
+    const mostrar = (e)=>{ 
+        switch(e.target.id){
+            case "color": mostrarColor ? setMostrarColor(false) : setMostrarColor(true);
+            break;
+        }
+    }
+
     return(
         <div className="md:mt-5  min-w-screen w-full ">
-            <h3 className="font-bold md:text-xl">Agregar producto destacado</h3>
-            <div className="flex flex-col md:flex md:flex-row justify-between md:space-x-16 mt-4">
+            <h3 className={`font-bold md:text-xl ${mostrarColor && "blur-sm"}`}>Agregar producto destacado</h3>
+            <div className={`flex flex-col md:flex md:flex-row justify-between md:space-x-16 mt-4 ${mostrarColor && "blur-sm"}`}>
                 <div className="md:w-[40%] xl:w-[30%] space-y-5">
                     <input type="text" placeholder="Titulo" onChange={getTitulo} className={estiloInput} />
                     <textarea onChange={getDescripcion} className={`${estiloInput} resize-none h-32`} placeholder="Descripción" />
@@ -54,7 +70,7 @@ export default function ProductoDestacado(){
                         <button className={estiloInput}>Fondo Derecha</button>
                     </div>
                     <div className="flex space-x-4">
-                        <button className={estiloInput}>Colores</button>
+                        <button onClick={mostrar} id="color" className={estiloInput}>Colores</button>
                         <button className={estiloInput}>Talles</button>
                     </div>
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
@@ -66,6 +82,8 @@ export default function ProductoDestacado(){
                     <VistaPrevDestacado datos={listaDatos}/>
                 </div>
             </div>
+            {mostrarColor && <Colores mostrar={mostrar}/>}
+           
         </div>
     )
 }
