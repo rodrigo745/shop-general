@@ -7,11 +7,24 @@ export default function Colores(props){
                 <div>
                     <h4 className="text-center font-bold text-xl mt-4">Colores</h4>
                     {/* Contenido */}
-                    <div className="px-5 mt-3">
-                        <p>Selecciona los colores disponibles</p>
-                        <input type="color" />
-                        <button>Agregar color</button>
+                    <div className="px-5 mt-3 space-y-4">
+                        <p>Selecciona y agrega los colores disponibles</p>
+                        <input type="color" className="h-8 mr-3 p-1" />
+                        <input type="text" className="h-8 rounded-md bg-slate-300"/>
+                        <button className="bg-slate-700 p-1 ml-3 px-4 text-white rounded-md">Agregar</button>
                         <p>Lista de colores seleccionados</p>
+                        <div className="flex space-x-5">
+                            <div className="flex flex-col items-center justify-center border p-2 rounded-md hover:bg-slate-200 cursor-pointer relative">
+                                <div className="opacity-0 hover:opacity-100 transition absolute bg-red-700 text-white w-full h-full text-center pt-6 rounded-md">Eliminar</div>
+                                <div className={`rounded-full w-8 h-8 bg-cyan-700 shadow-md`}></div>
+                                <p>#0891b2</p>
+                            </div>
+                            <div className="flex flex-col items-center justify-center border p-2 rounded-md hover:bg-slate-200 cursor-pointer relative">
+                                <div className="opacity-0 hover:opacity-100 transition absolute bg-red-700 text-white w-full h-full text-center pt-6 rounded-md">Eliminar</div>
+                                <div className={`rounded-full w-8 h-8 bg-cyan-700 shadow-md`}></div>
+                                <p>#0891b2</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="flex justify-end space-x-5 m-4">
