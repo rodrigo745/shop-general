@@ -16,7 +16,8 @@ export default function Colores(props){
 
     const eliminar = (e)=>{
         const seleccion = e.target.id;
-        console.log(seleccion);
+        const eliminado = listaColores.filter((eliminar, index)=> index != seleccion)
+        setListaColores(eliminado);
     }
 
     const getColor = (e)=>{setColor(e.target.value)}
