@@ -6,7 +6,13 @@ export default function Colores(props){
                 bg-white rounded-lg shadow-xl text-neutral-900 flex flex-col justify-between">
                 <div>
                     <h4 className="text-center font-bold text-xl mt-4">Colores</h4>
-
+                    {/* Contenido */}
+                    <div className="px-5 mt-3">
+                        <p>Selecciona los colores disponibles</p>
+                        <input type="color" />
+                        <button>Agregar color</button>
+                        <p>Lista de colores seleccionados</p>
+                    </div>
                 </div>
                 <div className="flex justify-end space-x-5 m-4">
                     <button id="color" onClick={props.mostrar} className="bg-slate-700 text-white w-32 p-2 rounded-md">Cancelar</button>
