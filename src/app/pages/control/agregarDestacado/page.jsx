@@ -12,6 +12,9 @@ export default function ProductoDestacado(){
     const [ descripcion, setDescripcion ] = useState();
     const [ precio, setPrecio ] = useState();
     const [ fondoIzquierda, setFondoIzquierda] = useState();
+    const [ listaDeColores, setListaDeColores ] = useState();
+
+    // envio a la base de datos
     const [ listaDatos, setListaDatos ] = useState([]);
     
 
@@ -19,19 +22,22 @@ export default function ProductoDestacado(){
     const getDescripcion = (e)=>{setDescripcion(e.target.value)}
     const getPrecio = (e)=>{setPrecio(e.target.value)}
     const getFondoIzquierda = (e)=>{setFondoIzquierda(e.target.value);}
+    const getListaDeColores = (e)=>{setListaDeColores(e.target.id)}
     
     useEffect(()=>{
         setListaDatos({
             titulo: titulo, 
             descripcion: descripcion, 
             precio: precio,
-            fondoIzquierda: fondoIzquierda
+            fondoIzquierda: fondoIzquierda,
+            listaDeColores: listaDeColores
         })
-    }, [titulo, descripcion, precio, fondoIzquierda])
+        console.log(listaDatos);
+    }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores])
 
 
     const handleClick = (event) => {
-        // Simular el clic en el input de color
+        // Simular el click en el input de color
         inputColorRef.current.click();
     };
 
@@ -81,7 +87,7 @@ export default function ProductoDestacado(){
                     <VistaPrevDestacado datos={listaDatos}/>
                 </div>
             </div>
-            {mostrarColor && <Colores mostrar={mostrar}/>}
+            {mostrarColor && <Colores mostrar={mostrar} listaDeColores={getListaDeColores}/>}
            
         </div>
     )
