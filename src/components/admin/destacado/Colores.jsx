@@ -1,15 +1,26 @@
 import { useState } from "react"
 
 
-export default function Colores(props){
+export default function Colores({mostrar, getListaDeColores, lista}){
 
     const [ color, setColor ] = useState();
-    const [ listaColores, setListaColores ] = useState([]);
+    const [ listaColores, setListaColores ] = useState(lista);
+    const [ notiGuardado, setNotiGuardado ] = useState(false);
 
     const agregar = ()=>{
         setListaColores((prevLista)=>{
             if(color !== undefined ){
-                return [...prevLista, color];
+                if(Array.isArray(prevLista)){
+                    return [...prevLista, color];
+                } else {
+                    return [color]
+                }
+            } else{
+                if(listaColores == undefined){
+                    return ["#000000"];
+                } else {
+                    return [...prevLista, "#000000"];
+                }
             }
         });
     }
@@ -19,12 +30,17 @@ export default function Colores(props){
         const eliminado = listaColores.filter((eliminar, index)=> index != seleccion)
         setListaColores(eliminado);
     }
-    const guardar = ()=>{
-        return <div onChange={props.listaDeColores} id={listaColores} ></div>;
+
+    const guardar = async()=>{
+        getListaDeColores(listaColores);
+        setNotiGuardado(true);
+        await new Promise((resolve)=> setTimeout(resolve, 2000));
+        setNotiGuardado(false);
     }
 
     const getColor = (e)=>{setColor(e.target.value)}
 
+    // sigue: obtener los datos de la lista de colores
 
     return(
         <div className="w-[100vw] h-[100vh] fixed top-0 bottom-0 right-0 left-0 mx-auto">
@@ -42,6 +58,7 @@ export default function Colores(props){
                         <p>Lista de colores seleccionados</p>
                         <div className="flex flex-wrap w-full">
                             {
+                                listaColores !== undefined &&
                                 listaColores.map((e, index)=> (
                                     <div key={index} className="flex flex-col mr-4 items-center justify-center border p-2 rounded-md hover:bg-slate-200 cursor-pointer relative">
                                         <div onClick={eliminar} id={index} className="opacity-0 hover:opacity-100 transition absolute bg-red-700 text-white w-full h-full text-center pt-6 rounded-md">Eliminar</div>
@@ -52,10 +69,14 @@ export default function Colores(props){
                             }
 
                         </div>
+                        {
+                            notiGuardado &&
+                            <div className=" bg-green-800 p-2 px-4 text-white absolute rounded-md top-0 right-0 mx-auto mr-4 w-32 h-10 text-center animate-pulse">Guardado</div>
+                        }
                     </div>
                 </div>
                 <div className="flex justify-end space-x-5 m-4">
-                    <button id="color" onClick={props.mostrar} className="bg-slate-700 text-white w-32 p-2 rounded-md">Cancelar</button>
+                    <button id="color" onClick={mostrar} className="bg-slate-700 text-white w-32 p-2 rounded-md">Cerrar</button>
                     <button onClick={guardar} className="bg-green-800 text-white w-32 p-2 rounded-md">Guardar</button>
                 </div>
             </div>

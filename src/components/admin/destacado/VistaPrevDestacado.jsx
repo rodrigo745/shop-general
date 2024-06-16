@@ -1,6 +1,6 @@
 export default function VistaPrevDestacado(props){
 
-    const { descripcion, titulo, precio, fondoIzquierda } = props.datos;
+    const { descripcion, titulo, precio, fondoIzquierda, listaDeColores } = props.datos;
 
     return(
         <div className="h-[85%] w-full bg-[#61493c] rounded-xl">
@@ -21,7 +21,15 @@ export default function VistaPrevDestacado(props){
                    </div>
                 </div>
                 <div className={`bg-white text-center pt-2 text-black rounded-b-xl md:w-[30%]`}>
-                    <p className="font-medium">Colores disponibles</p>
+                    <p className="font-bold">Colores disponibles</p>
+                    <div className="flex justify-center flex-wrap">
+                        {
+                            listaDeColores !== undefined &&
+                            listaDeColores.map((e,index)=> (
+                                <div key={index} className="w-8 h-8 mr-4 mt-3 shadow-md rounded-full" style={{backgroundColor: e}}></div>
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
         </div>

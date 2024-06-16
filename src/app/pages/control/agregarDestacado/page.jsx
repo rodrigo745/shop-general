@@ -13,17 +13,19 @@ export default function ProductoDestacado(){
     const [ precio, setPrecio ] = useState();
     const [ fondoIzquierda, setFondoIzquierda] = useState();
     const [ listaDeColores, setListaDeColores ] = useState();
-
+    
     // envio a la base de datos
     const [ listaDatos, setListaDatos ] = useState([]);
     
-
     const getTitulo = (e)=>{setTitulo(e.target.value)}
     const getDescripcion = (e)=>{setDescripcion(e.target.value)}
     const getPrecio = (e)=>{setPrecio(e.target.value)}
     const getFondoIzquierda = (e)=>{setFondoIzquierda(e.target.value);}
-    const getListaDeColores = (e)=>{setListaDeColores(e.target.id)}
     
+    function getListaDeColores(lista){ 
+        setListaDeColores(lista);
+    }
+
     useEffect(()=>{
         setListaDatos({
             titulo: titulo, 
@@ -48,7 +50,6 @@ export default function ProductoDestacado(){
             body: JSON.stringify(listaDatos)
         })
     }
-
 
     // modals
     const [ mostrarColor, setMostrarColor ] = useState(false);
@@ -87,7 +88,7 @@ export default function ProductoDestacado(){
                     <VistaPrevDestacado datos={listaDatos}/>
                 </div>
             </div>
-            {mostrarColor && <Colores mostrar={mostrar} listaDeColores={getListaDeColores}/>}
+            {mostrarColor && <Colores mostrar={mostrar} getListaDeColores={getListaDeColores} lista={listaDeColores}/>}
            
         </div>
     )
