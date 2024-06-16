@@ -1,4 +1,14 @@
+import { useState } from "react"
+
+
 export default function Colores(props){
+
+    const [ color, setColor ] = useState();
+    const [ listaColores, setListaColores ] = useState();
+
+    const getColor = (e)=>{setColor(e.target.value)}
+
+
     return(
         <div className="w-[100vw] h-[100vh] fixed top-0 bottom-0 right-0 left-0 mx-auto">
             <div className="w-[100vw] bg-black opacity-75 h-[100vh] absolute top-0 bottom-0 right-0 left-0 mx-auto "></div>
@@ -10,7 +20,7 @@ export default function Colores(props){
                     <div className="px-5 mt-3 space-y-4">
                         <p>Selecciona y agrega los colores disponibles</p>
                         <input type="color" className="h-8 mr-3 p-1" />
-                        <input type="text" className="h-8 rounded-md bg-slate-300"/>
+                        <input type="text" value={color ? color : "#000000"} className="h-8 rounded-md bg-slate-300"/>
                         <button className="bg-slate-700 p-1 ml-3 px-4 text-white rounded-md">Agregar</button>
                         <p>Lista de colores seleccionados</p>
                         <div className="flex space-x-5">
