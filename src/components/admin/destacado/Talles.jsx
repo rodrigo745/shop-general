@@ -24,7 +24,7 @@ export default function Talles({ mostrar, getListaDeTalles, lista}){
         });
         setValorTalle("");
         setValorTalle();
-
+        // Limpiar el campo de texto
     }
 
     const eliminar = (e)=>{

@@ -12,8 +12,8 @@ export default function ProductoDestacado(){
     const [ descripcion, setDescripcion ] = useState();
     const [ precio, setPrecio ] = useState();
     const [ fondoIzquierda, setFondoIzquierda] = useState();
-    const [ listaDeColores, setListaDeColores ] = useState();
-    const [ listaDeTalles, setListaDeTalles ] = useState();
+    const [ listaDeColores, setListaDeColores ] = useState([]);
+    const [ listaDeTalles, setListaDeTalles ] = useState([]);
     
     // envio a la base de datos
     const [ listaDatos, setListaDatos ] = useState([]);
@@ -40,7 +40,7 @@ export default function ProductoDestacado(){
             listaDeColores: listaDeColores,
             listaDeTalles: listaDeTalles
         })
-        console.log(listaDatos);
+        console.log(listaDatos)
     }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores, listaDeTalles])
 
 
@@ -52,7 +52,10 @@ export default function ProductoDestacado(){
     const agregarDatos = async()=>{
         const subida = await fetch("/api/destacados/sd", {
             method: "POST",
-            body: JSON.stringify(listaDatos)
+            body: JSON.stringify(listaDatos),
+            headers: {
+                "Content-type": "application/json"
+            }
         })
     }
 
