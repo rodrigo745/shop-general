@@ -40,9 +40,8 @@ export default function ProductoDestacado(){
             listaDeColores: listaDeColores,
             listaDeTalles: listaDeTalles
         })
-        console.log(listaDatos)
-    }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores, listaDeTalles])
 
+    }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores, listaDeTalles])
 
     const handleClick = (event) => {
         // Simular el click en el input de color
@@ -91,7 +90,7 @@ export default function ProductoDestacado(){
                         <button onClick={mostrar} id="talle" className={estiloInput}>Talles</button>
                     </div>
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
-                    <input type="text" placeholder="Cargar imagen principal" className={estiloInput} />
+                    <input type="file" onChange={(e)=> { console.log(e) }} placeholder="Cargar imagen principal" className={estiloInput} />
                     <input type="text" placeholder="Cargar imagenes secundarias" className={estiloInput} />
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>

@@ -3,7 +3,6 @@ import { useState } from "react";
 export default function Talles({ mostrar, getListaDeTalles, lista}){
 
     const [ talle, setTalle ] = useState();
-    const [ valorTalle, setValorTalle ] = useState();
     const [ listaTalles, setListaTalles ] = useState(lista);
     const [ notiGuardado, setNotiGuardado ] = useState(false);
 
@@ -21,10 +20,10 @@ export default function Talles({ mostrar, getListaDeTalles, lista}){
                     return [...prevLista];
                 }
             }
+            setTalle("")
         });
-        setValorTalle("");
-        setValorTalle();
-        // Limpiar el campo de texto
+        setTalle("")
+
     }
 
     const eliminar = (e)=>{
@@ -52,7 +51,7 @@ export default function Talles({ mostrar, getListaDeTalles, lista}){
                     {/* Contenido */}
                     <div className="px-5 mt-3 space-y-4">
                         <p>Escribe y agrega los talles disponibles</p>
-                        <input onChange={getTalle} type="text" value={valorTalle} placeholder="(Ej: XL, M, 30, 40, 20cm, 1,5m)" className="h-8 px-3 rounded-md bg-slate-300" />
+                        <input onChange={getTalle} type="text" value={talle} placeholder="(Ej: XL, M, 30, 40, 20cm, 1,5m)" className="h-8 px-3 rounded-md bg-slate-300" />
                         <button onClick={agregar} className="bg-slate-700 p-1 ml-3 px-4 text-white rounded-md">Agregar</button>
                         <p>Lista de talles seleccionados</p>
                         <div className="flex flex-wrap w-full">

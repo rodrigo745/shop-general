@@ -18,7 +18,7 @@ export default function VistaPrevDestacado(props){
                         </div>
                    </div>
                     {
-                        listaDeTalles !== undefined &&
+                        (listaDeTalles !== undefined && listaDeTalles.length > 0 ) &&
                         <div className="mb-10">
                             <p className="text-lg font-medium">Talles disponibles</p>
                             <div className="flex flex-wrap ml-1">
@@ -31,17 +31,19 @@ export default function VistaPrevDestacado(props){
                         </div>
                     }
                 </div>
-                <div className={`bg-white text-center pt-2 text-black rounded-b-xl md:w-[30%]`}>
-                    <p className="font-bold">Colores disponibles</p>
-                    <div className="flex justify-center flex-wrap">
-                        {
-                            listaDeColores !== undefined &&
-                            listaDeColores.map((e,index)=> (
-                                <div key={index} className="w-8 h-8 mr-4 mt-3 shadow-md rounded-full" style={{backgroundColor: e}}></div>
-                            ))
-                        }
+                {
+                    (listaDeColores !== undefined && listaDeColores.length > 0) &&
+                    <div className={`bg-white text-center pt-2 text-black rounded-b-xl md:w-[30%]`}>
+                        <p className="font-bold text-center">Colores disponibles</p>
+                        <div className="flex justify-center flex-wrap pl-3">
+                            {
+                                listaDeColores.map((e,index)=> (
+                                    <div key={index} className="w-8 h-8 mr-4 mt-3 shadow-md rounded-full" style={{backgroundColor: e}}></div>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     )
