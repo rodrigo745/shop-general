@@ -27,7 +27,9 @@ export default function ProductoDestacado(){
     function getListaDeColores(lista){ 
         setListaDeColores(lista);
     }
-    
+    function getListaDeTalles(lista){
+        setListaDeTalles(lista);
+    }
 
     useEffect(()=>{
         setListaDatos({
@@ -35,10 +37,11 @@ export default function ProductoDestacado(){
             descripcion: descripcion, 
             precio: precio,
             fondoIzquierda: fondoIzquierda,
-            listaDeColores: listaDeColores
+            listaDeColores: listaDeColores,
+            listaDeTalles: listaDeTalles
         })
-        //console.log(listaDatos);
-    }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores])
+        console.log(listaDatos);
+    }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores, listaDeTalles])
 
 
     const handleClick = (event) => {
@@ -95,7 +98,7 @@ export default function ProductoDestacado(){
             </div>
             {/* Modals */}
             {mostrarColor && <Colores mostrar={mostrar} getListaDeColores={getListaDeColores} lista={listaDeColores}/>}
-            {mostrarTalle && <Talles/>}
+            {mostrarTalle && <Talles mostrar={mostrar} getListaDeTalles={getListaDeTalles} lista={listaDeTalles} />}
         </div>
     )
 }
