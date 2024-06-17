@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function Talles({ mostrar, getListaDeTalles, lista}){
+
     const [ talle, setTalle ] = useState();
     const [ valorTalle, setValorTalle ] = useState();
     const [ listaTalles, setListaTalles ] = useState(lista);
@@ -12,17 +13,18 @@ export default function Talles({ mostrar, getListaDeTalles, lista}){
                 if(Array.isArray(prevLista)){
                     return [...prevLista, talle];
                 } else {
-                    return [talle]
+                    return [talle];
                 }
             } else{
                 if(listaTalles == undefined){
-                    return ["#000000"];
                 } else {
-                    return [...prevLista, "#000000"];
+                    return [...prevLista];
                 }
             }
         });
         setValorTalle("");
+        setValorTalle();
+
     }
 
     const eliminar = (e)=>{
