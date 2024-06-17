@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 // Componentes 
 import VistaPrevDestacado from "@/components/admin/destacado/VistaPrevDestacado";
 import Colores from "@/components/admin/destacado/Colores";
-
+import Talles from "@/components/admin/destacado/Talles";
 
 export default function ProductoDestacado(){
     const inputColorRef = useRef(null);
@@ -13,6 +13,7 @@ export default function ProductoDestacado(){
     const [ precio, setPrecio ] = useState();
     const [ fondoIzquierda, setFondoIzquierda] = useState();
     const [ listaDeColores, setListaDeColores ] = useState();
+    const [ listaDeTalles, setListaDeTalles ] = useState();
     
     // envio a la base de datos
     const [ listaDatos, setListaDatos ] = useState([]);
@@ -22,9 +23,11 @@ export default function ProductoDestacado(){
     const getPrecio = (e)=>{setPrecio(e.target.value)}
     const getFondoIzquierda = (e)=>{setFondoIzquierda(e.target.value);}
     
+
     function getListaDeColores(lista){ 
         setListaDeColores(lista);
     }
+    
 
     useEffect(()=>{
         setListaDatos({
@@ -34,7 +37,7 @@ export default function ProductoDestacado(){
             fondoIzquierda: fondoIzquierda,
             listaDeColores: listaDeColores
         })
-        console.log(listaDatos);
+        //console.log(listaDatos);
     }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores])
 
 
@@ -44,7 +47,6 @@ export default function ProductoDestacado(){
     };
 
     const agregarDatos = async()=>{
-    
         const subida = await fetch("/api/destacados/sd", {
             method: "POST",
             body: JSON.stringify(listaDatos)
@@ -53,10 +55,13 @@ export default function ProductoDestacado(){
 
     // modals
     const [ mostrarColor, setMostrarColor ] = useState(false);
+    const [ mostrarTalle, setMostrarTalle ] = useState(false);
 
     const mostrar = (e)=>{ 
         switch(e.target.id){
             case "color": mostrarColor ? setMostrarColor(false) : setMostrarColor(true);
+            break;
+            case "talle": mostrarTalle ? setMostrarTalle(false) : setMostrarTalle(true);
             break;
         }
     }
@@ -77,7 +82,7 @@ export default function ProductoDestacado(){
                     </div>
                     <div className="flex space-x-4">
                         <button onClick={mostrar} id="color" className={estiloInput}>Colores</button>
-                        <button className={estiloInput}>Talles</button>
+                        <button onClick={mostrar} id="talle" className={estiloInput}>Talles</button>
                     </div>
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
                     <input type="text" placeholder="Cargar imagen principal" className={estiloInput} />
@@ -88,8 +93,9 @@ export default function ProductoDestacado(){
                     <VistaPrevDestacado datos={listaDatos}/>
                 </div>
             </div>
+            {/* Modals */}
             {mostrarColor && <Colores mostrar={mostrar} getListaDeColores={getListaDeColores} lista={listaDeColores}/>}
-           
+            {mostrarTalle && <Talles/>}
         </div>
     )
 }

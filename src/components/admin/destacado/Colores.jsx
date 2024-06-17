@@ -40,8 +40,6 @@ export default function Colores({mostrar, getListaDeColores, lista}){
 
     const getColor = (e)=>{setColor(e.target.value)}
 
-    // sigue: obtener los datos de la lista de colores
-
     return(
         <div className="w-[100vw] h-[100vh] fixed top-0 bottom-0 right-0 left-0 mx-auto">
             <div className="w-[100vw] bg-black opacity-75 h-[100vh] absolute top-0 bottom-0 right-0 left-0 mx-auto "></div>
