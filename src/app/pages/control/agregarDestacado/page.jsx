@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import VistaPrevDestacado from "@/components/admin/destacado/VistaPrevDestacado";
 import Colores from "@/components/admin/destacado/Colores";
 import Talles from "@/components/admin/destacado/Talles";
+import AgregarImagen from "@/components/admin/destacado/AgregarImagen";
 
 export default function ProductoDestacado(){
     const inputColorRef = useRef(null);
@@ -71,6 +72,9 @@ export default function ProductoDestacado(){
         }
     }
 
+
+    
+
     return(
         <div className="md:mt-5  min-w-screen w-full ">
             <h3 className={`font-bold md:text-xl ${mostrarColor && "blur-sm"}`}>Agregar producto destacado</h3>
@@ -90,7 +94,7 @@ export default function ProductoDestacado(){
                         <button onClick={mostrar} id="talle" className={estiloInput}>Talles</button>
                     </div>
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
-                    <input type="file" onChange={(e)=> { console.log(e) }} placeholder="Cargar imagen principal" className={estiloInput} />
+                    <AgregarImagen estilo={estiloInput}/>
                     <input type="text" placeholder="Cargar imagenes secundarias" className={estiloInput} />
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
