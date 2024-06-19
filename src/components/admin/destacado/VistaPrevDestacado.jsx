@@ -18,9 +18,11 @@ export default function VistaPrevDestacado(props){
                             <button className="p-2 px-4 text-sm  bg-neutral-800 rounded-lg">Ver detalle</button>
                         </div>
                    </div>
+                   
+                   
                    {
                     props.imgPrincipal &&
-                        <Image src={props.imgPrincipal} width={400} height={400} alt="Imagen principal" />
+                        <Image className="absolute right-0 mt-52 mr-[17%]" src={props.imgPrincipal} width={350} height={350} style={{width: "auto", height: "auto"}} alt="Imagen principal" />
                    }
                 {
                         (listaDeTalles !== undefined && listaDeTalles.length > 0 ) &&
