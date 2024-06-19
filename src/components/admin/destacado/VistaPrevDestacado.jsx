@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function VistaPrevDestacado(props){
 
     const { descripcion, titulo, precio, fondoIzquierda, 
@@ -17,7 +18,11 @@ export default function VistaPrevDestacado(props){
                             <button className="p-2 px-4 text-sm  bg-neutral-800 rounded-lg">Ver detalle</button>
                         </div>
                    </div>
-                    {
+                   {
+                    props.imgPrincipal &&
+                        <Image src={props.imgPrincipal} width={400} height={400} alt="Imagen principal" />
+                   }
+                {
                         (listaDeTalles !== undefined && listaDeTalles.length > 0 ) &&
                         <div className="mb-10">
                             <p className="text-lg font-medium">Talles disponibles</p>

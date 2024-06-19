@@ -8,5 +8,6 @@ export async function POST(request){
     const res = await request.json();
     const data = await destacado.create(res);
 
+    
     return NextResponse.json(data);
 }

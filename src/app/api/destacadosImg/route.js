@@ -11,15 +11,28 @@ cloudinary.config({
 
 export async function POST(request){
     const data = await request.formData();
-    const image = !data.get("file");
+    const image = data.get("file");
 
-    if(image){
-        return NextResponse.json("No se ha subido ninguna imagen", { status: 404});
+    if(!image){
+        return NextResponse.json("No se ha subido ninguna imagen", { status: 400});
     } 
-    const bytes = image.arrayBuffer();
+    const bytes = await image.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    return NextResponse.json("imagen subida");
+    const response = await new Promise((resolve, reject)=> {
+        cloudinary.uploader.upload_stream({}, (err, result)=> {
+            if(err){
+                reject(err);
+            }
+            resolve(result);
+        }).end(buffer);
+    });
+    
+
+    return NextResponse.json({
+        message: "imagen subida",
+        url: response.secure_url,
+    });
 }
 
 
