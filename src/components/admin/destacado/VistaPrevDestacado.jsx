@@ -3,7 +3,7 @@ export default function VistaPrevDestacado(props){
 
     const { descripcion, titulo, precio, fondoIzquierda, 
             listaDeColores, listaDeTalles } = props.datos;
-
+    const { size, giro } = props.opcionesImg;
     
 
     return(
@@ -23,10 +23,11 @@ export default function VistaPrevDestacado(props){
                    
                     {
                     props.imgPrincipal &&
-                        <Image className="absolute right-0 mt-40 mr-[15%]" src={props.imgPrincipal} width={props.sizeImg ? props.sizeImg : 350} height={props.sizeImg ? props.sizeImg : 350}  alt="Imagen principal" />
+                        <Image className={`absolute right-0 mt-40 mr-[15%]`} src={props.imgPrincipal} width={size ? size : 350} height={size ? size : 350} alt="Imagen principal" 
+                        style={{ transform: `rotate(${giro}deg)` }} />
                     }
                 {
-                        (listaDeTalles !== undefined && listaDeTalles.length > 0 ) &&
+                    (listaDeTalles !== undefined && listaDeTalles.length > 0 ) &&
                         <div className="mb-10">
                             <p className="text-lg font-medium">Talles disponibles</p>
                             <div className="flex flex-wrap ml-1">

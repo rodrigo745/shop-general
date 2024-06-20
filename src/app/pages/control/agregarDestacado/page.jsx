@@ -16,7 +16,11 @@ export default function ProductoDestacado(){
     const [ listaDeColores, setListaDeColores ] = useState([]);
     const [ listaDeTalles, setListaDeTalles ] = useState([]);
     const [ imagenUrl, setImagenUrl ] = useState();
-    const [ sizeImg, setSizeImg ] = useState();
+    const [ opcionesImg, setOpcionesImg ] = useState({
+        size: 350,
+        giro: 0,
+
+    });
     
     // envio a la base de datos
     const [ listaDatos, setListaDatos ] = useState([]);
@@ -73,8 +77,6 @@ export default function ProductoDestacado(){
             break;
         }
     }
-
-
     
 
     return(
@@ -96,12 +98,12 @@ export default function ProductoDestacado(){
                         <button onClick={mostrar} id="talle" className={estiloInput}>Talles</button>
                     </div>
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
-                    <AgregarImagen estilo={estiloInput} setImagenUrl={setImagenUrl} setSizeImg={setSizeImg}/>
+                    <AgregarImagen estilo={estiloInput} setImagenUrl={setImagenUrl} setOpcionesImg={setOpcionesImg}/>
                     <input type="text" placeholder="Cargar imagenes secundarias" className={estiloInput} />
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
                 <div className="md:w-[60%] xl:w-[70%] h-full md:h-[740px] mt-10 md:mt-0">
-                    <VistaPrevDestacado datos={listaDatos} imgPrincipal={imagenUrl} sizeImg={sizeImg}/>
+                    <VistaPrevDestacado datos={listaDatos} imgPrincipal={imagenUrl} opcionesImg={opcionesImg}/>
                 </div>
             </div>
             {/* Modals */}

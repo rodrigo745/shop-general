@@ -1,10 +1,23 @@
 "use client";
 import { useState } from "react";
+import { useEffect } from "react";
 
-export default function AgregarImagen({estilo, setImagenUrl, setSizeImg}){
+export default function AgregarImagen({estilo, setImagenUrl, setOpcionesImg}){
     
     const [ file, setFile ] = useState(null);
     const [ opciones, setOpciones ] = useState(false);
+
+    const [ size, setSize ] = useState();
+    const [ giro, setGiro ] = useState();
+
+    // guardar los dos de arriba en el setOpcionesImg
+    useEffect(()=>{
+        setOpcionesImg({
+            size: size,
+            giro: giro
+        })
+    },[size, giro]);
+
     const mostrar = ()=>{
         opciones ? setOpciones(false) : setOpciones(true);
     }
@@ -37,14 +50,14 @@ export default function AgregarImagen({estilo, setImagenUrl, setSizeImg}){
                 <div className="mt-3 flex">
                     <div className="flex">
                         <p className="pt-1">Tamaño: </p>
-                        <input type="number"
-                        onChange={(e)=> setSizeImg(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
+                        <input type="number" placeholder="350"
+                        onChange={(e)=> setSize(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
                         <p className="pt-1 ml-1">px</p>
                     </div>
                     <div className="flex">
                         <p className="pt-1">Girar: </p>
                         <input type="number"
-                        onChange={(e)=> setSizeImg(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
+                        onChange={(e)=> setGiro(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
                         <p className="pt-1 ml-1">px</p>
                     </div>
                 </div>
