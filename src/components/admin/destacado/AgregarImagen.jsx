@@ -9,6 +9,9 @@ export default function AgregarImagen({estilo, setImagenUrl, setSizeImg}){
         opciones ? setOpciones(false) : setOpciones(true);
     }
 
+    // terminar la opcion de girar
+    
+
     return(
         <div className={`${estilo}`}>
             <div className="flex">
@@ -31,9 +34,15 @@ export default function AgregarImagen({estilo, setImagenUrl, setSizeImg}){
             </div>
             {
                 opciones &&
-                <div className="mt-3">
+                <div className="mt-3 flex">
                     <div className="flex">
                         <p className="pt-1">Tamaño: </p>
+                        <input type="number"
+                        onChange={(e)=> setSizeImg(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
+                        <p className="pt-1 ml-1">px</p>
+                    </div>
+                    <div className="flex">
+                        <p className="pt-1">Girar: </p>
                         <input type="number"
                         onChange={(e)=> setSizeImg(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
                         <p className="pt-1 ml-1">px</p>
