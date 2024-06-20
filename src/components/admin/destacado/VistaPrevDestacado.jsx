@@ -4,6 +4,8 @@ export default function VistaPrevDestacado(props){
     const { descripcion, titulo, precio, fondoIzquierda, 
             listaDeColores, listaDeTalles } = props.datos;
 
+    
+
     return(
         <div className="h-[85%] w-full bg-[#61493c] rounded-xl">
             <h3 className={`text-xl font-bold px-5 p-2 bg-white text-black rounded-t-xl`}>¡Producto destacado!</h3>
