@@ -27,7 +27,6 @@ export async function POST(request){
             resolve(result);
         }).end(buffer);
     });
-    
 
     return NextResponse.json({
         message: "imagen subida",

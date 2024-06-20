@@ -21,11 +21,10 @@ export default function VistaPrevDestacado(props){
                         </div>
                    </div>
                    
-                   
-                   {
+                    {
                     props.imgPrincipal &&
-                        <Image className="absolute right-0 mt-52 mr-[17%]" src={props.imgPrincipal} width={props.sizeImg ? props.sizeImg : 350} height={props.sizeImg ? props.sizeImg : 350} style={{width: "auto", height: "auto"}} alt="Imagen principal" />
-                   }
+                        <Image className="absolute right-0 mt-40 mr-[15%]" src={props.imgPrincipal} width={props.sizeImg ? props.sizeImg : 350} height={props.sizeImg ? props.sizeImg : 350}  alt="Imagen principal" />
+                    }
                 {
                         (listaDeTalles !== undefined && listaDeTalles.length > 0 ) &&
                         <div className="mb-10">
