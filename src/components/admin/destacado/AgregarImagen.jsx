@@ -33,7 +33,8 @@ export default function AgregarImagen({estilo, setImagenUrl, setSizeImg}){
                 <div className="mt-3">
                     <div className="flex">
                         <p className="pt-1">Tamaño: </p>
-                        <input type="text" className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
+                        <input type="number"
+                        onChange={(e)=> setSizeImg(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
                         <p className="pt-1 ml-1">px</p>
                     </div>
                 </div>
