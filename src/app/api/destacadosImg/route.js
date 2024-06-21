@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from 'cloudinary';
 
-// Configuration
+// Configuracion
 cloudinary.config({ 
-    cloud_name: 'diu0ksiyr', 
+    cloud_name: process.env.CLOUDINARY_USER, 
     api_key: process.env.CLOUDINARY_KEY, 
-    api_secret: process.env.CLOUDINARY_SECRET // Click 'View Credentials' below to copy your API secret
+    api_secret: process.env.CLOUDINARY_SECRET 
 });
-
 
 export async function POST(request){
     const data = await request.formData();

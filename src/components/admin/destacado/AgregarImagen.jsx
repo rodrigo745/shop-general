@@ -26,7 +26,7 @@ export default function AgregarImagen({estilo, setImagenUrl, setOpcionesImg}){
     
 
     return(
-        <div className={`${estilo}`}>
+        <div className={`${estilo} overflow-auto`}>
             <div className="flex">
                 <form className={`flex justify-between`}
                     onSubmit={async(e)=> {
@@ -50,13 +50,13 @@ export default function AgregarImagen({estilo, setImagenUrl, setOpcionesImg}){
                 <div className="mt-3 flex">
                     <div className="flex">
                         <p className="pt-1">Tamaño: </p>
-                        <input type="number" placeholder="350"
-                        onChange={(e)=> setSize(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
+                        <input type="number" placeholder="350" min="0" max="1500"
+                        onChange={(e)=> setSize(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[40%]"/>
                         <p className="pt-1 ml-1">px</p>
                     </div>
-                    <div className="flex">
+                    <div className="flex md:ml-10">
                         <p className="pt-1">Girar: </p>
-                        <input type="number"
+                        <input type="number" placeholder="0"
                         onChange={(e)=> setGiro(e.target.value)} className="rounded-md p-1 px-3 bg-[#50382C] ml-3 w-[25%]"/>
                         <p className="pt-1 ml-1">px</p>
                     </div>
