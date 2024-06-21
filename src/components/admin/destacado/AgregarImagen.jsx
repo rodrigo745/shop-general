@@ -22,13 +22,14 @@ export default function AgregarImagen({estilo, setImagenUrl, setOpcionesImg}){
         opciones ? setOpciones(false) : setOpciones(true);
     }
 
-    // terminar la opcion de girar
-    
-
     return(
         <div className={`${estilo} overflow-auto`}>
+            <div className="flex justify-between mb-2">
+                <p>Selecciona la imagen principal:</p>
+                <button onClick={mostrar} className="bg-neutral-100 text-black px-1 ml-2 font-bold h-7 rounded-md text-sm">Opciones</button>
+            </div>
             <div className="flex">
-                <form className={`flex justify-between`}
+                <form className={`flex w-full justify-between`}
                     onSubmit={async(e)=> {
                         e.preventDefault();
 
@@ -41,9 +42,9 @@ export default function AgregarImagen({estilo, setImagenUrl, setOpcionesImg}){
                         setImagenUrl(data.url);
                     }}> 
                     <input type="file" onChange={(e)=> {setFile(e.target.files[0])}} />
-                    <button className="bg-neutral-100 text-black px-3 font-bold h-7 rounded-md">Subir</button>
+                    <button className="bg-neutral-100 text-black px-3 font-bold h-7 rounded-md text-sm">Subir</button>
                 </form>
-                <button onClick={mostrar} className="bg-neutral-100 text-black px-1 ml-2 font-bold h-7 rounded-md">Opciones</button>
+                
             </div>
             {
                 opciones &&
