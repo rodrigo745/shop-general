@@ -6,18 +6,16 @@ export default function AgregarImgagenSecundaria({estilo, setImagenSecundariaUrl
 
     const [ listaImg, setListaImg ] = useState([]);
 
-    const agregarLista = async()=>{
-        // envio a cloud
-        console.log(imagenSecundariaUrl)
+    const eliminar = (e)=>{
+        const nuevaLista = imagenSecundariaUrl.filter((item)=> item !== e.target.id);
+        setImagenSecundariaUrl(nuevaLista);
     }
-
-    // tarea: se puede subir una imagen sola, y esta la opcion de subir varias a la vez, si se usan las dos opciones entonces hacer una funcion que agrupe los diferentes elementos en un solo array
 
     return(
         <div className={`${estilo} overflow-auto`}>
             <div className="flex justify-between mb-2">
                 <p>Selecciona las imagenes secundarias:</p>
-                <button form="form-control" className="bg-neutral-100 text-black px-1 ml-2 font-bold h-7 rounded-md text-sm">Opciones</button>
+                <button form="form-control" className="bg-neutral-100 text-black px-3 ml-2 font-bold h-7 rounded-md text-sm">Subir</button>
             </div>
             {
                 /* Imagen secundaria */
@@ -46,16 +44,15 @@ export default function AgregarImgagenSecundaria({estilo, setImagenSecundariaUrl
                 }} />
             </form>
             <div className="mt-3">
-                <div className="flex space-x-5">
+                <div className="flex flex-wrap w-full ">
                     {
                         imagenSecundariaUrl !== undefined &&
                         imagenSecundariaUrl.map((e, index)=> (
-                            <div key={index} className="border relative rounded-md  w-20 h-20">
-                                <div className="w-full h-full animate-pulse absolute bg-white"></div>
-                                <Image src={e} className="bg-contain w-full h-full" width={100} height={100} alt="producto" />
-                                <button className="w-full h-full absolute bg-red-400 opacity-0 hover:opacity-100">x</button>
+                            <div key={index} className="border mb-3 mr-5 relative rounded-md  w-20 h-20">
+                                <div className="w-full h-full animate-pulse absolute bg-white z-10"></div>
+                                <Image src={e} className="bg-contain absolute w-full h-full z-20" width={100} height={100} alt="producto" />
+                                <button id={e} onClick={eliminar} className="w-full h-full bg-red-400 opacity-0 hover:opacity-100 rounded-md absolute z-30">x</button>
                             </div>
-
                         ))
                     }
                 </div>
