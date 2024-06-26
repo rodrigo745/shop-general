@@ -48,11 +48,12 @@ export default function ProductoDestacado(){
             fondoIzquierda: fondoIzquierda,
             listaDeColores: listaDeColores,
             listaDeTalles: listaDeTalles,
-            imagenUrl: imagenUrl
+            imagenUrl: imagenUrl,
+            imagenSecundariaUrl, imagenSecundariaUrl
         })
 
     }, [titulo, descripcion, precio, fondoIzquierda, 
-        listaDeColores, listaDeTalles, imagenUrl])
+        listaDeColores, listaDeTalles, imagenUrl, imagenSecundariaUrl])
 
     const handleClick = (event) => {
         // Simular el click en el input de color
@@ -107,7 +108,7 @@ export default function ProductoDestacado(){
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
                 <div className="mt-10 md:mt-0">
-                    <VistaPrevDestacado datos={listaDatos} imgPrincipal={imagenUrl} opcionesImg={opcionesImg}/>
+                    <VistaPrevDestacado datos={listaDatos} opcionesImg={opcionesImg}/>
                 </div>
             </div>
             {/* Modals */}

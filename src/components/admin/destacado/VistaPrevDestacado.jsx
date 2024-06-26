@@ -2,7 +2,8 @@ import Image from "next/image";
 export default function VistaPrevDestacado(props){
 
     const { descripcion, titulo, precio, fondoIzquierda, 
-            listaDeColores, listaDeTalles } = props.datos;
+            listaDeColores, listaDeTalles, imagenUrl,
+            imagenSecundariaUrl } = props.datos;
     const { size, giro, x, y } = props.opcionesImg;
     
 
@@ -21,8 +22,8 @@ export default function VistaPrevDestacado(props){
                         </div>
                    </div>
                     {
-                    props.imgPrincipal &&
-                        <Image className={`absolute mt-[10vh]`} src={props.imgPrincipal} width={size ? size : 600} height={size ? size : 600} alt="Imagen principal" 
+                    imagenUrl &&
+                        <Image className={`absolute mt-[10vh]`} src={imagenUrl} width={size ? size : 600} height={size ? size : 600} alt="Imagen principal" 
                         style={{ transform: `rotate(${giro}deg)`, right: `${x ? x : 20}%`, top: `${y}%`, width: `${ size ? (size/10) : (25) }vw`}}/>
                     }
                 {
@@ -39,9 +40,11 @@ export default function VistaPrevDestacado(props){
                         </div>
                     }
                 </div>
+                <div className="flex justify-center w-[30%]">
+
                 {
                     (listaDeColores !== undefined && listaDeColores.length > 0) &&
-                    <div className={`bg-white text-center pt-2 text-black rounded-b-xl md:w-[30%]`}>
+                    <div className={`bg-white text-center pt-2 text-black rounded-b-xl md:w-[100%]`}>
                         <p className="font-bold text-center">Colores disponibles</p>
                         <div className="flex justify-center flex-wrap pl-3">
                             {
@@ -52,6 +55,20 @@ export default function VistaPrevDestacado(props){
                         </div>
                     </div>
                 }
+                {
+                    imagenSecundariaUrl &&
+                    <div className={`flex flex-col space-y-5 absolute h-full mr-10 right-0 mt-24  overflow-auto max-h-[45vh]
+                        ${imagenSecundariaUrl.length < 4 && "place-content-center"}`}>
+                        {
+                            imagenSecundariaUrl.map((e, index)=> (
+                                <div key={index} className="rounded-md shadow-md">
+                                    <Image src={e} width={100} height={100} alt="producto"/>
+                                </div>
+                            ))
+                        }
+                    </div>
+                }
+                </div>
             </div>
         </div>
     )
