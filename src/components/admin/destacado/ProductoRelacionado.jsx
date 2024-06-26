@@ -28,11 +28,14 @@ export default function ProductoRelacionado({mostrar, datos}){
                             </div>
                             <input type="search" placeholder="Buscar..." className="p-2 px-4 rounded-md bg-slate-300" />
                         </div>
-                        <div className="flex flex-wrap">
+                        <div className="flex flex-wrap mt-5">
                                 {
                                     nuevosDatos.map((e, index)=> (
-                                        <div  key={index} className="border px-2 flex flex-col items-center w-20 h-28 rounded-md">
-                                            <p>{e.titulo}</p>
+                                        <div  key={index} className="border px-2 flex flex-col items-center w-28 h-40 rounded-md mr-4 mb-4 justify-between shadow-md">
+                                            <div>
+
+                                                <p className="text-center">{e.titulo}</p>
+                                            </div>
                                             <p>${e.precio}</p>
                                         </div>
                                     ))
