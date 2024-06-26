@@ -7,6 +7,7 @@ import Colores from "@/components/admin/destacado/Colores";
 import Talles from "@/components/admin/destacado/Talles";
 import AgregarImagen from "@/components/admin/destacado/AgregarImagen";
 import AgregarImgagenSecundaria from "@/components/admin/destacado/AgregarImagenSecundaria";
+import ProductoRelacionado from "@/components/admin/destacado/ProductoRelacionado";
 
 export default function ProductoDestacado(){
     const inputColorRef = useRef(null);
@@ -102,7 +103,7 @@ export default function ProductoDestacado(){
                         <button onClick={mostrar} id="color" className={estiloInput}>Colores</button>
                         <button onClick={mostrar} id="talle" className={estiloInput}>Talles</button>
                     </div>
-                    <input type="text" placeholder="Productos relacionados" className={estiloInput} />
+                    <ProductoRelacionado estilo={estiloInput} />
                     <AgregarImagen estilo={estiloInput} setImagenUrl={setImagenUrl} setOpcionesImg={setOpcionesImg}/>
                     <AgregarImgagenSecundaria estilo={estiloInput} imagenSecundariaUrl={imagenSecundariaUrl} setImagenSecundariaUrl={setImagenSecundariaUrl}/>
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
