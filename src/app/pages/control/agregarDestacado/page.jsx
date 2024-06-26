@@ -49,7 +49,7 @@ export default function ProductoDestacado(){
             listaDeColores: listaDeColores,
             listaDeTalles: listaDeTalles,
             imagenUrl: imagenUrl,
-            imagenSecundariaUrl, imagenSecundariaUrl
+            imagenSecundariaUrl: imagenSecundariaUrl
         })
 
     }, [titulo, descripcion, precio, fondoIzquierda, 

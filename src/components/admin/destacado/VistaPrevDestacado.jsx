@@ -61,7 +61,7 @@ export default function VistaPrevDestacado(props){
                         ${imagenSecundariaUrl.length < 4 && "place-content-center"}`}>
                         {
                             imagenSecundariaUrl.map((e, index)=> (
-                                <div key={index} className="rounded-md shadow-md">
+                                <div key={index} className="rounded-md shadow-md border">
                                     <Image src={e} width={100} height={100} alt="producto"/>
                                 </div>
                             ))

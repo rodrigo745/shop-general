@@ -8,7 +8,8 @@ const destacados = new Schema({
     fondoIzquierda: String,
     listaDeColores: Array,
     listaDeTalles: Array,
-    imagenUrl: String
+    imagenUrl: String,
+    imagenSecundariaUrl: Array
 });
 
 export default mongoose.models.destacados || mongoose.model("destacados", destacados);
