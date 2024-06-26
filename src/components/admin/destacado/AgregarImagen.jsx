@@ -40,7 +40,6 @@ export default function AgregarImagen({estilo, setImagenUrl, setOpcionesImg}){
                         const formData = new FormData();
                         formData.append("file", file);
                         const response = await fetch("/api/destacadosImg", { method: "POST", body: formData })
-                        console.log(response);
                         if (!response.ok) {
                             throw new Error(`HTTP error! Status: ${response.status}`);
                         }

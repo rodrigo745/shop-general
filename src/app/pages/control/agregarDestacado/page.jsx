@@ -103,7 +103,7 @@ export default function ProductoDestacado(){
                     </div>
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
                     <AgregarImagen estilo={estiloInput} setImagenUrl={setImagenUrl} setOpcionesImg={setOpcionesImg}/>
-                    <AgregarImgagenSecundaria estilo={estiloInput} setImagenSecundariaUrl={setImagenSecundariaUrl}/>
+                    <AgregarImgagenSecundaria estilo={estiloInput} imagenSecundariaUrl={imagenSecundariaUrl} setImagenSecundariaUrl={setImagenSecundariaUrl}/>
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
                 <div className="mt-10 md:mt-0">
