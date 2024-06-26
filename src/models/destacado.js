@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
-const destacado = new Schema({
+const destacados = new Schema({
     titulo: String,
     descripcion: String,
     precio: String,
     fondoIzquierda: String,
     listaDeColores: Array,
-    listaDeTalles: Array
+    listaDeTalles: Array,
+    imagenUrl: String
 });
 
-export default mongoose.models.destacado || mongoose.model("destacado", destacado);
+export default mongoose.models.destacados || mongoose.model("destacados", destacados);

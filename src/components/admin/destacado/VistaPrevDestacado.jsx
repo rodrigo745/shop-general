@@ -11,7 +11,7 @@ export default function VistaPrevDestacado(props){
             <h3 className={`text-[1vw] font-bold px-5 p-2 bg-white text-black rounded-t-xl`}>¡Producto destacado!</h3>
             <div className="flex flex-col md:flex md:flex-row w-full h-full bg-white rounded-b-xl overflow-hidden relative ">
                 <div className={`flex flex-col justify-between md:pr-44 xl:pr-72 h-full rounded-b-xl md:w-[70%] px-5 ${!fondoIzquierda && "bg-cyan-700"}`} style={fondoIzquierda && {backgroundColor: fondoIzquierda}}>
-                   <div >
+                   <div>
                         <p className="mt-10 text-[2vw] font-bold">${precio ? precio : "00.00"}</p>
                         <p className="mt-3 text-[1.5vw] font-medium">{titulo ? titulo : "Titulo"}</p>
                         <p className="mt-3 text-[0.85vw]">{descripcion ? descripcion : "Descripción"}</p>
@@ -20,11 +20,10 @@ export default function VistaPrevDestacado(props){
                             <button className="p-2 px-4 text-[0.7vw]  bg-neutral-800 rounded-lg">Ver detalle</button>
                         </div>
                    </div>
-                   
                     {
                     props.imgPrincipal &&
-                        <Image className={`absolute  mt-[25vh] mr-[6vw]`} src={props.imgPrincipal} width={size ? size : 350} height={size ? size : 350} alt="Imagen principal" 
-                        style={{ transform: `rotate(${giro}deg)`, right: `${x}%`, top: `${y}%`, width: `${ size ? (size/10) : (350/10) }vw`}} />
+                        <Image className={`absolute mt-[10vh]`} src={props.imgPrincipal} width={size ? size : 600} height={size ? size : 600} alt="Imagen principal" 
+                        style={{ transform: `rotate(${giro}deg)`, right: `${x ? x : 20}%`, top: `${y}%`, width: `${ size ? (size/10) : (25) }vw`}}/>
                     }
                 {
                     (listaDeTalles !== undefined && listaDeTalles.length > 0 ) &&

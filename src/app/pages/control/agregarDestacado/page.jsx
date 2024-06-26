@@ -20,9 +20,10 @@ export default function ProductoDestacado(){
     const [ opcionesImg, setOpcionesImg ] = useState({
         size: 350,
         giro: 0,
-
     });
-    
+    const [ imagenSecundariaUrl, setImagenSecundariaUrl ] = useState();
+
+
     // envio a la base de datos
     const [ listaDatos, setListaDatos ] = useState([]);
     
@@ -46,10 +47,12 @@ export default function ProductoDestacado(){
             precio: precio,
             fondoIzquierda: fondoIzquierda,
             listaDeColores: listaDeColores,
-            listaDeTalles: listaDeTalles
+            listaDeTalles: listaDeTalles,
+            imagenUrl: imagenUrl
         })
 
-    }, [titulo, descripcion, precio, fondoIzquierda, listaDeColores, listaDeTalles])
+    }, [titulo, descripcion, precio, fondoIzquierda, 
+        listaDeColores, listaDeTalles, imagenUrl])
 
     const handleClick = (event) => {
         // Simular el click en el input de color
@@ -83,13 +86,8 @@ export default function ProductoDestacado(){
     return(
         <div className="md:mt-5  min-w-screen w-full ">
             <h3 className={`font-bold md:text-xl ${mostrarColor && "blur-sm"}`}>Agregar producto destacado</h3>
-<<<<<<< HEAD
             <div className={`flex flex-col md:flex md:flex-row mt-4 ${mostrarColor && "blur-sm"}`}>
                 <div className="md:w-[20vw] xl:w-[22vw] space-y-5 mr-10">
-=======
-            <div className={`flex flex-col md:flex md:flex-row justify-between md:space-x-16 mt-4 ${mostrarColor && "blur-sm"}`}>
-                <div className="md:w-[40%] xl:w-[30%] space-y-5">
->>>>>>> 778aae221e7f37c156eb2f47c535f887e9823404
                     <input type="text" placeholder="Titulo" onChange={getTitulo} className={estiloInput} />
                     <textarea onChange={getDescripcion} className={`${estiloInput} resize-none h-32`} placeholder="Descripción" />
                     <input type="text" placeholder="Precio" onChange={getPrecio} className={estiloInput} />
@@ -105,14 +103,10 @@ export default function ProductoDestacado(){
                     </div>
                     <input type="text" placeholder="Productos relacionados" className={estiloInput} />
                     <AgregarImagen estilo={estiloInput} setImagenUrl={setImagenUrl} setOpcionesImg={setOpcionesImg}/>
-                    <AgregarImgagenSecundaria estilo={estiloInput}/>
+                    <AgregarImgagenSecundaria estilo={estiloInput} setImagenSecundariaUrl={setImagenSecundariaUrl}/>
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
                 </div>
-<<<<<<< HEAD
                 <div className="mt-10 md:mt-0">
-=======
-                <div className="md:w-[60%] xl:w-[70%] h-full md:h-[740px] mt-10 md:mt-0">
->>>>>>> 778aae221e7f37c156eb2f47c535f887e9823404
                     <VistaPrevDestacado datos={listaDatos} imgPrincipal={imagenUrl} opcionesImg={opcionesImg}/>
                 </div>
             </div>

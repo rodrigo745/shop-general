@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function AgregarImgagenSecundaria({estilo}){
+export default function AgregarImgagenSecundaria({estilo, setImagenSecundariaUrl}){
 
     const [ listaImg, setListaImg ] = useState([]);
 
@@ -23,7 +23,7 @@ export default function AgregarImgagenSecundaria({estilo}){
             <div>
                 <input type="file" multiple onChange={(e)=> { 
                     setListaImg((prevList)=>{
-                        return [...prevList, e.target.files]})
+                        return [...prevList, e.target.files[0]]})
                     }} />
             </div>
         </div>
