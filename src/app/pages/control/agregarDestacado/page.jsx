@@ -74,6 +74,7 @@ export default function ProductoDestacado(){
     // modals
     const [ mostrarColor, setMostrarColor ] = useState(false);
     const [ mostrarTalle, setMostrarTalle ] = useState(false);
+    const [ mostrarProducto, setMostrarProducto ] = useState(false);
 
     const mostrar = (e)=>{ 
         switch(e.target.id){
@@ -81,9 +82,29 @@ export default function ProductoDestacado(){
             break;
             case "talle": mostrarTalle ? setMostrarTalle(false) : setMostrarTalle(true);
             break;
+            case "producto": mostrarProducto ? setMostrarProducto(false) : setMostrarProducto(true);
+            break;
         }
     }
     
+
+    // obtengo los datos de productos relacionados
+    const obtenerDatosProductos = async()=>{
+        const datos = await fetch("/api/destacados/as")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // Parseamos la respuesta como JSON
+        })
+        .then(data => {
+          return data; // Mostramos los datos en la consola
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+        });
+        return datos;
+    }
 
     return(
         <div className="md:mt-5  min-w-screen w-full ">
@@ -103,7 +124,9 @@ export default function ProductoDestacado(){
                         <button onClick={mostrar} id="color" className={estiloInput}>Colores</button>
                         <button onClick={mostrar} id="talle" className={estiloInput}>Talles</button>
                     </div>
-                    <ProductoRelacionado estilo={estiloInput} />
+                    <div className={estiloInput}>
+                        <button onClick={mostrar} id="producto">Productos relacionados</button>
+                    </div>
                     <AgregarImagen estilo={estiloInput} setImagenUrl={setImagenUrl} setOpcionesImg={setOpcionesImg}/>
                     <AgregarImgagenSecundaria estilo={estiloInput} imagenSecundariaUrl={imagenSecundariaUrl} setImagenSecundariaUrl={setImagenSecundariaUrl}/>
                     <button onClick={agregarDatos} className="fondoCli p-2 text-white font-bold w-full border-2 rounded-lg">Agregar</button>
@@ -115,6 +138,7 @@ export default function ProductoDestacado(){
             {/* Modals */}
             {mostrarColor && <Colores mostrar={mostrar} getListaDeColores={getListaDeColores} lista={listaDeColores}/>}
             {mostrarTalle && <Talles mostrar={mostrar} getListaDeTalles={getListaDeTalles} lista={listaDeTalles} />}
+            {mostrarProducto && <ProductoRelacionado mostrar={mostrar} datos={obtenerDatosProductos}/>}
         </div>
     )
 }
