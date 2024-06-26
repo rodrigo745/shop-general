@@ -10,7 +10,11 @@ cloudinary.config({
 
 export async function POST(request){
     const data = await request.formData();
+<<<<<<< HEAD
     const image = await data.get("file");
+=======
+    const image = data.get("file");
+>>>>>>> 778aae221e7f37c156eb2f47c535f887e9823404
 
     if(!image){
         return NextResponse.json("No se ha subido ninguna imagen", { status: 400});
